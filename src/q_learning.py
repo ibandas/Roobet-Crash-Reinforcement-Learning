@@ -244,6 +244,7 @@ class QLearning:
         for k, v in env.crash.action_counter.items():
             print("Action: {k}, Chosen {v}%".format(k=k, v=(v / (len(env.crash.data_set) / 2))))
 
+        self.plot_percentages(wins=wins, losses=losses, passed=passed)
         self.plot_profit(env.crash.money_made)
 
     def _get_epsilon(self, progress):
@@ -274,7 +275,7 @@ class QLearning:
 
     @staticmethod
     def plot_percentages(wins, losses, passed):
-        data_file = "Crash-7states5Actions-Half-Train"
+        data_file = "Crash-4states10Actions-Half-Train"
         wins_plt = plt.plot(wins, label="Win Percentage Every 1k Samples")
         losses_plt = plt.plot(losses, label="Loss Percentage Every 1k Samples")
         passed_plt = plt.plot(passed, label="Passed Percentage Every 1k Samples")
